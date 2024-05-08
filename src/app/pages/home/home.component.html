@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<div class="relative flex justify-start items-start w-full">
+    <div class="fixed shadow-md py-3 w-[18%] h-screen overscroll-y-scroll sidebar-container">
+        <div class="flex flex-col justify-center items-center gap-2 px-2 container">
+
+            <div *ngFor="let category of categories"
+                class="flex justify-between items-center hover:bg-gray-300 px-2 p-2 rounded-md w-full cursor-pointer tabs">
+                <a (click)="searchByCategory(category.name)"
+                    class="flex justify-between items-center gap-2 w-full text-[16px]">
+                    <i class="w-[10%] fas" [ngClass]="category.icon"></i>
+                    <span class="w-[90%]">{{ category.name }}</span>
+                </a>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="relative flex flex-col justify-start items-start gap-2 px-4 p-2 main-container">
+
+        <div class="relative py-2 category-container">
+            <div class="relative flex justify-start items-center gap-2 container">
+                <div *ngFor="let category of youtubeCategories"
+                    class="bg-gray-200 hover:bg-gray-400 px-3 p-1 rounded-md font-semibold text-[14px] transition-all duration-300 cursor-pointer ease-in tab">
+                    <a (click)="searchByCategory(category)">{{category}}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="overflow-y: scroll;" class="items-center gap-2 grid grid-cols-3 w-full h-[80vh] video-card-container">
+            <ng-container *ngIf="loading; else content"   class="w-full">
+                <div class="flex flex-col justify-start items-start gap-2 pb-4 animate-pulse cursor-pointer card"
+                    *ngFor="let item of fakeLoopData">
+                    <div class="bg-gray-300 rounded-lg w-full h-52"></div> <!-- Placeholder for image -->
+                    <div class="flex justify-center items-start gap-2 info-container">
+                        <div class="profile-container">
+                            <div class="bg-gray-400 rounded-full w-10 h-10"></div>
+                            <!-- Placeholder for profile image -->
+                        </div>
+                        <div class="flex flex-col justify-start items-start description-container">
+                            <div class="bg-gray-400 rounded w-80 h-6 title-container">
+                                <strong class=""></strong> <!-- Placeholder for title -->
+                            </div>
+                            <div class="bg-gray-400 my-[1px] rounded w-1/2 h-4 text-[14px] channel-name-container">
+                                <p class=""></p> <!-- Placeholder for channel name -->
+                            </div>
+                            <div class="text-[14px] views-container">
+                                <p class="bg-gray-400 rounded w-1/3 h-4"></p> <!-- Placeholder for publish time -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #content>
+                <div class="flex flex-col justify-start items-start gap-2 pb-4 cursor-pointer card"
+                    (click)="navigateToVideo(item.id.videoId,item.snippet.channelId)"
+                    *ngFor="let item of searchResults">
+                    <div class="w-full image-container object-cover">
+                        <img class="hover:shadow-lg rounded-lg w-full object-cover smooth"
+                            [src]="item.snippet.thumbnails.medium.url" alt="">
+                    </div>
+                    <div class="flex justify-center items-start gap-2 info-container">
+                        <div class="profile-container">
+                            <img class="rounded-full w-10"
+                                src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                                alt="">
+                        </div>
+                        <div class="flex flex-col justify-start items-start description-container">
+                            <div class="title-container">
+                                <strong>{{item.snippet.title | truncate:60}}</strong>
+                            </div>
+                            <div class="my-[1px] text-[14px] channel-name-container">
+                                <p>{{item.snippet.channelTitle }}</p>
+                            </div>
+                            <div class="text-[14px] views-container">
+                                <p>{{item.snippet.publishTime | timeDifference}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full text-center showMore-container">
+                    <button class="bg-slate-300 px-4 p-2 rounded-md" (click)="showMore()" *ngIf="nextPageToken">Show
+                        More</button>
+                </div>
+            </ng-template>
+           
+        </div>
+    </div>
+</div>

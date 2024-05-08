@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://googleads.g.doubleclick.net",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  

@@ -20,6 +20,7 @@
             "outputPath": "dist/youtube-clone",
             "index": "src/index.html",
             "main": "src/main.ts",
+            
             "polyfills": [
               "zone.js"
             ],
@@ -100,5 +101,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "dc0bd389-e614-45ba-80fd-cf938745ec5a"
   }
 }
