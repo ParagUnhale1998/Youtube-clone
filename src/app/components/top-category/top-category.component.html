@@ -1,0 +1,8 @@
+<div class="flex justify-start gap-2">
+    <div (click)="searchByCategory(category)" *ngFor="let category of youtubeCategories; let last = last; let i = index"
+        class="flex-shrink-0 bg-gray-200 dark:hover:bg-youtube-bg-secondary hover:bg-gray-400 px-3 p-1 rounded-md font-semibold text-[14px] dark:bg-youtube-text-placeholder whitespace-nowrap transition-all duration-300 cursor-pointer ease-in tab">
+        <a>{{category}}</a>
+
+    </div>
+    <div class="px-6 py-2 spaceContainer"></div>
+</div>

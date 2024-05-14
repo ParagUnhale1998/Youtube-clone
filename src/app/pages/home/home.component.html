@@ -1,0 +1,51 @@
+<!-- <app-navbar></app-navbar> -->
+
+<div class="relative flex justify-start items-start dark:bg-youtube-bg max-w-screen dark:text-youtube-text-primary overflow-hidden">
+    <div *ngIf="sidebarOpen" class="sm:relative top-0 left-0 z-50 absolute bg-white dark:bg-youtube-bg shadow-lg sm:shadow-md py-3 w-[250px] sm:w-[30%] md:w-[30%] xl:w-[18%] h-screen dark:text-youtube-text-primary sidebar-container">
+          <app-sidebar></app-sidebar>
+    </div>
+    <div [class.fullWidthMainContainer]="!sidebarOpen" class="relative flex flex-col justify-start items-start gap-2 py-2 w-full sm:w-[70%] md:w-[70%] xl:w-[82%] main-container">
+        <div class="relative top-category px-4 py-2 w-screen overflow-x-auto category-container">
+            <app-top-category></app-top-category>
+        </div>
+        
+        <div style="overflow-y: scroll;" class="relative justify-start items-start gap-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 px-2 w-full h-[80vh] video-card-container">
+            <ng-container *ngIf="loading; else content" >
+                <app-home-video-card *ngFor="let item of fakeLoopData" ></app-home-video-card>
+            </ng-container>
+            <ng-template #content>
+                <div class="flex flex-col justify-start items-start gap-2 pb-4 w-full cursor-pointer card"
+                    (click)="navigateToVideo(item.id.videoId,item.snippet.channelId)"
+                    *ngFor="let item of searchResults">
+                    <div class="w-full image-container object-cover">
+                        <img class="hover:shadow-lg rounded-lg w-full object-cover smooth"
+                            [src]="item.snippet.thumbnails.high.url" alt="">
+                    </div>
+                    <div class="flex justify-center items-start gap-2 info-container">
+                        <div class="profile-container">
+                            <!-- <img class="rounded-full w-10"
+                                src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                                alt=""> -->
+                        </div>
+                        <div class="flex flex-col justify-start items-start description-container">
+                            <div class="title-container">
+                                <strong>{{item.snippet.title | truncate:60}}</strong>
+                            </div>
+                            <div class="my-[1px] text-[14px] channel-name-container">
+                                <p>{{item.snippet.channelTitle }}</p>
+                            </div>
+                            <div class="text-[14px] views-container">
+                                <p>{{item.snippet.publishTime | timeDifference}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center w-full h-full text-center showMore-container">
+                    <button class="bg-slate-300 dark:hover:bg-youtube-bg-secondary px-4 p-2 rounded-md dark:bg-youtube-text-placeholder" (click)="showMore()" *ngIf="nextPageToken">Show
+                        More</button>
+                </div>
+            </ng-template>
+           
+        </div>
+    </div>
+</div>
