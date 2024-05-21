@@ -1,27 +1,83 @@
-# YoutubeClone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+# YouTube Clone
 
-## Development server
+Hello, guys! My name is Parag Unhale. Welcome to my YouTube clone project created using Angular and Tailwind CSS, powered by the YouTube API.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Overview
 
-## Code scaffolding
+This project aims to replicate the core features of YouTube, providing users with a familiar browsing and video watching experience.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+### Home Page
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Navbar:** Featuring a logo, search input container, dark mode toggle, and icons.
+- **Category Sections:** Sections for music, movies, gaming, etc., allowing users to browse different content categories.
+- **Sidebar:** Includes various categories for easy navigation.
+- **Video Cards:** Displaying videos with a "Show More" button to load additional cards.
+- **Skeleton Loading:** Elegant loading animations for smoother user experience.
 
-## Running unit tests
+### Category Navigation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Clickable Categories:** Clicking on categories like "Music" or "Movies" dynamically updates the content.
+- **Hide/Show Categories:** Ability to toggle visibility of categories, enhancing user control over content display.
+- **"Show More" Button:** Load more video cards within each category.
 
-## Running end-to-end tests
+### Dark Mode/Light Mode
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Tailwind CSS Integration:** Seamless switching between dark and light modes for personalized viewing preferences.
 
-## Further help
+### Video Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Video Details:** Includes video iframe, title, channel name, subscriber count, and channel image.
+- **Interactive Buttons:** Like, share, and download buttons with intuitive icons.
+- **Video Description:** Displays views, upload date, tags, and detailed information about the video.
+- **Top Comments:** Highlights top 10 comments with user names, profile pictures, and comment content.
+- **"Show More Suggestions" Button:** Allows users to explore more video suggestions.
+
+### Search Functionality
+
+- **Search Suggestions:** Displays top 5 suggestions with debouncing to optimize API calls.
+- **Search Results:** Navigates to search results page with relevant video cards based on user query.
+
+### Responsive Design
+
+- **Fully Responsive:** Ensures optimal viewing experience across all devices, maintaining functionality and design integrity.
+
+## Demo
+
+1. **Explore Categories:** Navigate through different categories such as music, movies, gaming, etc.
+2. **Dark Mode/Light Mode:** Toggle between dark and light modes for different viewing preferences.
+3. **Video Interaction:** Click on video cards to view detailed video pages with comments and suggestions.
+4. **Search Functionality:** Test search suggestions and results by entering queries like "WWE" or "John Cena."
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/youtube-clone.git
+   
+2.Navigate to the project directory:
+
+cd youtube-clone
+Install dependencies:
+
+npm install
+Run the application:
+
+ng serve
+Open your browser and navigate to http://localhost:4200 to view the YouTube clone.
+
+Contributing
+Contributions are welcome! Please feel free to submit a Pull Request for any improvements or additional features.
+
+Technologies Used
+Angular
+Tailwind CSS
+YouTube API
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Note: Replace https://github.com/your-username/youtube-clone.git with your actual GitHub repository URL.
+
+![Image Description](https://github.com/ParagUnhale1998/Youtube-clone/blob/main/src/assets/youtube.jpg)
